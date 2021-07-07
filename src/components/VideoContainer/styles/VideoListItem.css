@@ -18,6 +18,10 @@
 	color: rgba(255, 255, 210, 1);
 }
 
+.video__icon--active {
+	color: rgba(255, 255, 210, 1);
+}
+
 .video__likes {
 	white-space: nowrap;
 }

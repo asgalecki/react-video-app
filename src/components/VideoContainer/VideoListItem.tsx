@@ -3,12 +3,29 @@ import { Card, CardBody, CardImg, CardText, CardTitle, Row } from "reactstrap";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faStar } from "@fortawesome/free-solid-svg-icons";
+import { VideoContext } from "../../contexts/VideoContext";
 import "./styles/VideoListItem.css";
 import IVideo from "../../interfaces/IVideo";
 
-const VideoListItem = (props: {video: IVideo, key: string}) => {
-  const {video} = props;
-  
+const VideoListItem = (props: { video: IVideo; key: string }) => {
+	const { video } = props;
+
+	// || Context
+	const { dispatchVideo } = useContext(VideoContext);
+
+	// || State
+	const [isFavourite, setIsFavourite] = useState(video.isFavourite);
+
+	// || Event handler
+	const handleFavourite = () => {
+		setIsFavourite(!isFavourite);
+		dispatchVideo({ type: "FAVOURITE_VIDEO", video });
+	};
+
+	const handleRemove = () => {
+		dispatchVideo({ type: "REMOVE_VIDEO", video });
+	};
+
 	// || Render
 	return (
 		<Card className='my-2 video__card'>
@@ -21,9 +38,7 @@ const VideoListItem = (props: {video: IVideo, key: string}) => {
 				/>
 				<CardBody className='ml-3 my-2 p-0 col-sm-6 d-flex flex-column justify-content-between'>
 					<div>
-						<CardTitle className='video__card--cursor'>
-							{video.title}
-						</CardTitle>
+						<CardTitle className='video__card--cursor'>{video.title}</CardTitle>
 						<CardText>
 							{Number(video.views) !== 0
 								? `${Number(video.views).toLocaleString()} views / `
@@ -38,11 +53,15 @@ const VideoListItem = (props: {video: IVideo, key: string}) => {
 						<FontAwesomeIcon
 							icon={faStar}
 							data-testid='video-favourite'
-              className="video__icon"
+							className={`video__icon ${
+								isFavourite ? "video__icon--active" : ""
+							}`}
+							onClick={handleFavourite}
 						/>
 						<FontAwesomeIcon
 							icon={faTrashAlt}
 							className='video__icon'
+							onClick={handleRemove}
 						/>
 					</div>
 				</CardBody>

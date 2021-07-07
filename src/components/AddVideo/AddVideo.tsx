@@ -15,7 +15,7 @@ import "./styles/AddVideo.css";
 
 const AddVideo = () => {
 	// || Context
-	const { videos, addVideo } = useContext(VideoContext);
+	const { videos, dispatchVideo } = useContext(VideoContext);
 
 	// || State
 	const [videoURI, setVideoURI] = useState("");
@@ -28,7 +28,7 @@ const AddVideo = () => {
 		setVideoURI("");
 
 		if (!isRepeated && type !== "unknown" && videoId !== "error") {
-			addVideo({id: videoId});
+			dispatchVideo({ type: "ADD_VIDEO", video: { id: videoId } });
 			setMessage("");
 			return;
 		}
