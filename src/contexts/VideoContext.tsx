@@ -4,7 +4,14 @@ import { VideoReducer } from "../reducers/VideoReducer";
 export const VideoContext: any = createContext({});
 
 const VideoContextProvider = (props: any) => {
-	const [videos, dispatchVideo] = useReducer(VideoReducer, []);
+	const [videos, dispatchVideo] = useReducer(VideoReducer, [], () => {
+		const localData = localStorage.getItem("videos");
+		return localData ? JSON.parse(localData) : [];
+	});
+
+	useEffect(() => {
+		localStorage.setItem("videos", JSON.stringify(videos));
+	}, [videos]);
 
 	return (
 		<VideoContext.Provider
