@@ -6,7 +6,7 @@ describe("Check is the video it in the db", () => {
 		let result = preventRepeat(fakeVideos, "477GoeCJB_Y");
 		expect(result).toBe(false);
 
-		result = preventRepeat(fakeVideos, "7lCDEYXw3mM");
+		result = preventRepeat(fakeVideos, "p5kcBxL7-qI");
 		expect(result).toBe(true);
 	});
 
@@ -14,7 +14,7 @@ describe("Check is the video it in the db", () => {
 		let result = preventRepeat(fakeVideos, "152233445");
 		expect(result).toBe(false);
 
-		result = preventRepeat(fakeVideos, "126100721");
+		result = preventRepeat(fakeVideos, "150879953");
 		expect(result).toBe(true);
 	});
 });
