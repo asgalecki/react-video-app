@@ -1,0 +1,23 @@
+.video__card {
+	background-color: rgba(42, 42, 46, 0.7);
+	z-index: 2;
+}
+
+.video__card--cursor {
+	cursor: pointer;
+}
+
+.video__icon {
+	color: rgba(255, 255, 210, 0.2);
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+
+.video__icon:focus,
+.video__icon:hover {
+	color: rgba(255, 255, 210, 1);
+}
+
+.video__likes {
+	white-space: nowrap;
+}
