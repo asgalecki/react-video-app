@@ -4,7 +4,7 @@ import { ListGroup, Row } from "reactstrap";
 import VideoListItem from "./VideoListItem";
 import IVideo from "../../interfaces/IVideo";
 
-const VideoList = () => {
+const VideoContainer = () => {
 	// || Context
 	const { videos }: any = useContext(VideoContext);
 
@@ -12,10 +12,9 @@ const VideoList = () => {
 	if (videos && videos.length) {
 		return (
 			<ListGroup className='mx-auto text-light'>
-				{videos
-					.map((video: IVideo) => {
-						return <VideoListItem video={video} key={video.id} />;
-					})}
+				{videos.map((video: IVideo) => {
+					return <VideoListItem video={video} key={video.id} />;
+				})}
 			</ListGroup>
 		);
 	}
@@ -23,4 +22,4 @@ const VideoList = () => {
 	return <p className='text-center'>No videos added yet.</p>;
 };
 
-export default VideoList;
+export default VideoContainer;

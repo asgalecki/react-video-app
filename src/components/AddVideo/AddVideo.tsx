@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { VideoContext } from "../../contexts/VideoContext";
 import validation from "../../service/validation/validation";
+import { getVideo } from "../../service/getVideo";
 import {
 	Button,
 	Fade,
@@ -28,7 +29,11 @@ const AddVideo = () => {
 		setVideoURI("");
 
 		if (!isRepeated && type !== "unknown" && videoId !== "error") {
-			dispatchVideo({ type: "ADD_VIDEO", video: { id: videoId } });
+			getVideo(type, videoId)
+				.then((res) => {
+					dispatchVideo({ type: "ADD_VIDEO", video: res });
+				})
+				.catch((err) => setMessage(err));
 			setMessage("");
 			return;
 		}
