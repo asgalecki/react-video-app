@@ -4,8 +4,9 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faStar } from "@fortawesome/free-solid-svg-icons";
 import { VideoContext } from "../../contexts/VideoContext";
-import "./styles/VideoListItem.css";
 import IVideo from "../../interfaces/IVideo";
+import VideoModal from "./VideoModal";
+import "./styles/VideoListItem.css";
 
 const VideoListItem = (props: { video: IVideo; key: string }) => {
 	const { video } = props;
@@ -15,6 +16,7 @@ const VideoListItem = (props: { video: IVideo; key: string }) => {
 
 	// || State
 	const [isFavourite, setIsFavourite] = useState(video.isFavourite);
+	const [modal, setModal] = useState(false);
 
 	// || Event handler
 	const handleFavourite = () => {
@@ -26,19 +28,27 @@ const VideoListItem = (props: { video: IVideo; key: string }) => {
 		dispatchVideo({ type: "REMOVE_VIDEO", video });
 	};
 
+	const toggleModal = () => {
+		setModal(!modal);
+	};
+
 	// || Render
 	return (
 		<Card className='my-2 video__card'>
+			<VideoModal isOpen={modal} toggle={toggleModal} video={video} />
 			<Row className='no-gutters'>
 				<CardImg
 					width='100%'
 					className='col-sm-5 p-2 video__card--cursor'
 					src={video.thumbnail}
+					onClick={toggleModal}
 					alt=''
 				/>
 				<CardBody className='ml-3 my-2 p-0 col-sm-6 d-flex flex-column justify-content-between'>
 					<div>
-						<CardTitle className='video__card--cursor'>{video.title}</CardTitle>
+						<CardTitle onClick={toggleModal} className='video__card--cursor'>
+							{video.title}
+						</CardTitle>
 						<CardText>
 							{Number(video.views) !== 0
 								? `${Number(video.views).toLocaleString()} views / `
