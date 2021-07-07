@@ -1,0 +1,13 @@
+.header {
+	background-color: rgba(42, 42, 46, 0.7);
+	color: rgba(255, 235, 210, 0.9);
+}
+
+.header__link:link,
+.header__link:visited,
+.header__link:focus,
+.header__link:active,
+.header__link:hover {
+	text-decoration: none;
+	color: rgba(255, 235, 210, 0.9);
+}
