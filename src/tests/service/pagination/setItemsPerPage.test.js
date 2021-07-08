@@ -1,4 +1,4 @@
-import setItemsPerPage from "../../../service/pagination/setItemstPerPage";
+import setItemsPerPage from "../../../service/pagination/setItemsPerPage";
 
 test("check that function gives proper value depends on displayType", () => {
 	// default - list display
