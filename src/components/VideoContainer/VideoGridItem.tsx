@@ -4,10 +4,13 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashAlt, faStar } from "@fortawesome/free-solid-svg-icons";
 import { VideoContext } from "../../contexts/VideoContext";
+import IVideo from "../../interfaces/IVideo";
 import VideoModal from "./VideoModal";
 import "./styles/VideoGridItem.css";
 
-const VideoGridItem = ({ video }: any) => {
+const VideoGridItem = (props: { video: IVideo; key: string }) => {
+	const { video } = props;
+
 	// || Context
 	const { dispatchVideo } = useContext(VideoContext);
 

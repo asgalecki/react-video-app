@@ -39,6 +39,8 @@ const Navigation = () => {
 
 	const handleRemoveAll = (): void => {
 		dispatchVideo({ type: "REMOVE_ALL_VIDEOS" });
+		dispatchUser({ type: "TOGGLE_FAVOURITE", isFavourite: false });
+		setIsFavourite(false);
 	};
 
 	const handleFilter = (e: any): void => {
@@ -50,6 +52,10 @@ const Navigation = () => {
 		dispatchUser({
 			type: "TOGGLE_FAVOURITE",
 			isFavourite: !isFavourite,
+		});
+		dispatchUser({
+			type: "SELECT",
+			select: 1,
 		});
 		setIsFavourite(!isFavourite);
 	};

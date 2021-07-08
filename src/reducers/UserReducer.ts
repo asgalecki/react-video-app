@@ -37,7 +37,12 @@ function toggleFavourite(state: IUser, action: IUserAction) {
 }
 
 function toggleDisplay(state: IUser, action: IUserAction) {
+	let selected = state.selected;
+	if (action.display === false) {
+		selected = 1;
+	}
 	const updatedState: IUser = Object.assign({}, state, {
+		selected,
 		display: action.display,
 	});
 	return updatedState;

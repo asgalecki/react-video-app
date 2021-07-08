@@ -14,13 +14,24 @@ const VideoContainer = () => {
 	const { selected, isFavourite, display }: any = user;
 
 	// || Service
-	const { currentItems, pages } = pagination(videos, selected, display);
+	const { currentItems, pages } = pagination(
+		videos,
+		selected,
+		display,
+		isFavourite
+	);
 
 	useEffect(() => {
 		dispatchUser({ type: "UPDATE_PAGES", pages: pages });
 	}, [videos, display, isFavourite]);
 
+	console.log(currentItems);
+
 	// || Render
+	if (!currentItems.length && isFavourite) {
+		return <p className='text-center'>You have no favourite videos.</p>;
+	}
+
 	if (currentItems.length && display) {
 		return (
 			<ListGroup className='mx-auto text-light'>
