@@ -44,6 +44,8 @@ describe("test VideoContainer component", () => {
 		const videos = [fakeVideos[1]];
 		const dispatchUser = jest.fn();
 		const user = {
+			selected: 1,
+			pages: [],
 			isFavourite: true,
 			display: true,
 		};
@@ -67,6 +69,8 @@ describe("test VideoContainer component", () => {
 		const videos = [fakeVideos[0]];
 		const dispatchUser = jest.fn();
 		const user = {
+			selected: 1,
+			pages: [],
 			isFavourite: false,
 			display: false,
 		};
@@ -93,6 +97,8 @@ describe("test VideoContainer component", () => {
 		const videos = [fakeVideos[1]];
 		const dispatchUser = jest.fn();
 		const user = {
+			selected: 1,
+			pages: [],
 			isFavourite: true,
 			display: false,
 		};
