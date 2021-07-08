@@ -16,6 +16,5 @@ function toggleFavourite(state: IUser, action: IUserAction) {
 	const updatedState: IUser = Object.assign({}, state, {
 		isFavourite: action.isFavourite,
 	});
-	console.log(updatedState);
 	return updatedState;
 }
