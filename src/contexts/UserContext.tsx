@@ -6,6 +6,7 @@ export const UserContext: any = createContext({});
 const UserContextProvider = (props: any) => {
 	const [user, dispatchUser] = useReducer(UserReducer, {
 		isFavourite: false,
+		display: true,
 	});
 
 	return (

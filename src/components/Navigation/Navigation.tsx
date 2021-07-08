@@ -1,7 +1,12 @@
 import React, { useState, useContext } from "react";
 import { VideoContext } from "../../contexts/VideoContext";
 import { UserContext } from "../../contexts/UserContext";
-import { faTrashAlt, faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+	faTrashAlt,
+	faStar,
+	faTh,
+	faListUl,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	Collapse,
@@ -25,6 +30,7 @@ const Navigation = () => {
 	// || State
 	const [isOpen, setIsOpen] = useState(false);
 	const [isFavourite, setIsFavourite] = useState(false);
+	const [display, setDisplay] = useState(true);
 
 	// || Event handler
 	const handleOpen = (): void => {
@@ -46,6 +52,11 @@ const Navigation = () => {
 			isFavourite: !isFavourite,
 		});
 		setIsFavourite(!isFavourite);
+	};
+
+	const handleDisplay = () => {
+		dispatchUser({ type: "TOGGLE_DISPLAY", display: !display });
+		setDisplay(!display);
 	};
 
 	// || Render
@@ -87,6 +98,15 @@ const Navigation = () => {
 									isFavourite ? "navigation__icon--active" : ""
 								}`}
 								data-testid='filter-favourite'
+							/>
+						</NavLink>
+					</NavItem>
+					<NavItem>
+						<NavLink href='#'>
+							<FontAwesomeIcon
+								icon={display ? faTh : faListUl}
+								onClick={handleDisplay}
+								className='navigation__icon'
 							/>
 						</NavLink>
 					</NavItem>
