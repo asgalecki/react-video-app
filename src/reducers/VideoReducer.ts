@@ -7,6 +7,7 @@ const strategies: IIndexable = {
 	ADD_VIDEO: addVideo,
 	REMOVE_VIDEO: removeVideo,
 	REMOVE_ALL_VIDEOS: removeAllVideos,
+	SORT_VIDEOS: sortVideos,
 	FAVOURITE_VIDEO: favouriteVideo,
 	__default__: (state: IVideoState) => state,
 };
@@ -29,6 +30,15 @@ function removeVideo(state: IVideoState, action: IVideoAction) {
 function removeAllVideos() {
 	const videos: [] = [];
 	return videos;
+}
+
+function sortVideos(state: IVideoState, action: IVideoAction) {
+	if (action.sortFilter === "latest") {
+		return [...state].sort((a, b) => b.added - a.added);
+	}
+	if (action.sortFilter === "oldest") {
+		return [...state].sort((a, b) => a.added - b.added);
+	}
 }
 
 function favouriteVideo(state: IVideoState, action: IVideoAction) {

@@ -3,3 +3,8 @@
 	background-color: rgba(42, 42, 46, 0.7);
 	border-top: 1px rgba(255, 235, 210, 0.9) solid;
 }
+
+.navigation__dropdown {
+	color: rgba(255, 235, 210, 0.9);
+	background-color: rgba(42, 42, 46, 0.9);
+}
