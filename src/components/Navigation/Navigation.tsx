@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { VideoContext } from "../../contexts/VideoContext";
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { UserContext } from "../../contexts/UserContext";
+import { faTrashAlt, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	Collapse,
@@ -19,9 +20,11 @@ import "./styles/Navigation.css";
 const Navigation = () => {
 	// || Context
 	const { dispatchVideo } = useContext(VideoContext);
+	const { dispatchUser } = useContext(UserContext);
 
 	// || State
 	const [isOpen, setIsOpen] = useState(false);
+	const [isFavourite, setIsFavourite] = useState(false);
 
 	// || Event handler
 	const handleOpen = (): void => {
@@ -35,6 +38,14 @@ const Navigation = () => {
 	const handleFilter = (e: any): void => {
 		const sortFilter = e.target.innerHTML.toLowerCase();
 		dispatchVideo({ type: "SORT_VIDEOS", sortFilter });
+	};
+
+	const handleFavourite = () => {
+		dispatchUser({
+			type: "TOGGLE_FAVOURITE",
+			isFavourite: !isFavourite,
+		});
+		setIsFavourite(!isFavourite);
 	};
 
 	// || Render
@@ -67,6 +78,18 @@ const Navigation = () => {
 							</DropdownItem>
 						</DropdownMenu>
 					</UncontrolledDropdown>
+					<NavItem>
+						<NavLink>
+							<FontAwesomeIcon
+								icon={faStar}
+								onClick={handleFavourite}
+								className={`navigation__icon ${
+									isFavourite ? "navigation__icon--active" : ""
+								}`}
+								data-testid='filter-favourite'
+							/>
+						</NavLink>
+					</NavItem>
 				</Nav>
 			</Collapse>
 		</Navbar>

@@ -8,3 +8,18 @@
 	color: rgba(255, 235, 210, 0.9);
 	background-color: rgba(42, 42, 46, 0.9);
 }
+
+.navigation__icon {
+	color: rgba(255, 255, 210, 0.2);
+	cursor: pointer;
+	transition: all 0.3s ease-in;
+}
+
+.navigation__icon:focus,
+.navigation__icon:hover {
+	color: rgba(255, 255, 210, 1);
+}
+
+.navigation__icon--active {
+	color: rgba(255, 255, 210, 1);
+}
