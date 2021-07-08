@@ -6,6 +6,7 @@ import IVideoState from "../interfaces/IVideoState";
 const strategies: IIndexable = {
 	ADD_VIDEO: addVideo,
 	REMOVE_VIDEO: removeVideo,
+	REMOVE_ALL_VIDEOS: removeAllVideos,
 	FAVOURITE_VIDEO: favouriteVideo,
 	__default__: (state: IVideoState) => state,
 };
@@ -21,9 +22,12 @@ function addVideo(state: IVideoState, action: IVideoAction) {
 }
 
 function removeVideo(state: IVideoState, action: IVideoAction) {
-	const videos = state.filter(
-		(video: IVideo) => video.id !== action.video!.id
-	);
+	const videos = state.filter((video: IVideo) => video.id !== action.video!.id);
+	return videos;
+}
+
+function removeAllVideos() {
+	const videos: [] = [];
 	return videos;
 }
 
