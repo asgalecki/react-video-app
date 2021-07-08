@@ -25,8 +25,6 @@ const VideoContainer = () => {
 		dispatchUser({ type: "UPDATE_PAGES", pages: pages });
 	}, [videos, display, isFavourite]);
 
-	console.log(currentItems);
-
 	// || Render
 	if (!currentItems.length && isFavourite) {
 		return <p className='text-center'>You have no favourite videos.</p>;

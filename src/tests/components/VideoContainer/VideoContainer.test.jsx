@@ -23,6 +23,27 @@ describe("test VideoContainer component", () => {
 		expect(para).toBeInTheDocument();
 	});
 
+	test("no videos & favourite filter", () => {
+		const dispatchUser = jest.fn();
+		const user = {
+			selected: 1,
+			pages: [],
+			isFavourite: true,
+			display: true,
+		};
+
+		render(
+			<VideoContextProvider>
+				<UserContext.Provider value={{ user, dispatchUser }}>
+					<VideoContainer />
+				</UserContext.Provider>
+			</VideoContextProvider>
+		);
+
+		const para = screen.getByText(/You have no favourite videos/i);
+		expect(para).toBeInTheDocument();
+	});
+
 	test("one video & no favourite (default) filter", () => {
 		const videos = [fakeVideos[0]];
 		render(
@@ -38,6 +59,28 @@ describe("test VideoContainer component", () => {
 
 		const videoTitle = screen.getByText(/Star Trek/i);
 		expect(videoTitle).toBeInTheDocument();
+	});
+
+	test("one video (no favourite) & favourite filter", () => {
+		const videos = [fakeVideos[0]];
+		const dispatchUser = jest.fn();
+		const user = {
+			selected: 1,
+			pages: [],
+			isFavourite: true,
+			display: true,
+		};
+
+		render(
+			<VideoContext.Provider value={{ videos }}>
+				<UserContext.Provider value={{ user, dispatchUser }}>
+					<VideoContainer />
+				</UserContext.Provider>
+			</VideoContext.Provider>
+		);
+
+		const para = screen.getByText(/You have no favourite videos/i);
+		expect(para).toBeInTheDocument();
 	});
 
 	test("one video (favourite) & favourite filter", () => {
@@ -116,5 +159,30 @@ describe("test VideoContainer component", () => {
 
 		const videoTitle = screen.getByText(/Fall in love with Poland/i);
 		expect(videoTitle).toBeInTheDocument();
+	});
+
+	test("one video (no favourite) & favourite filter & grid display", () => {
+		const videos = [fakeVideos[0]];
+		const dispatchUser = jest.fn();
+		const user = {
+			selected: 1,
+			pages: [],
+			isFavourite: true,
+			display: false,
+		};
+
+		render(
+			<VideoContext.Provider value={{ videos }}>
+				<UserContext.Provider value={{ user, dispatchUser }}>
+					<VideoContainer />
+				</UserContext.Provider>
+			</VideoContext.Provider>
+		);
+
+		const videoGrid = screen.queryByTestId("grid-display");
+		expect(videoGrid).not.toBeInTheDocument();
+
+		const para = screen.getByText(/You have no favourite videos/i);
+		expect(para).toBeInTheDocument();
 	});
 });
