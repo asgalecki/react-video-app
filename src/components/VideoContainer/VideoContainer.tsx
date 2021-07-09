@@ -1,10 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { VideoContext } from "../../contexts/VideoContext";
 import { UserContext } from "../../contexts/UserContext";
-import { ListGroup, Row } from "reactstrap";
-import VideoListItem from "./VideoListItem";
-import VideoGridItem from "./VideoGridItem";
-import IVideo from "../../interfaces/IVideo";
+import Videos from "./Videos";
 import pagination from "../../service/pagination/pagination";
 
 const VideoContainer = () => {
@@ -30,40 +27,8 @@ const VideoContainer = () => {
 		return <p className='text-center'>You have no favourite videos.</p>;
 	}
 
-	if (currentItems.length && display) {
-		return (
-			<ListGroup className='mx-auto text-light'>
-				{currentItems
-					.filter((video: IVideo) => {
-						if (!isFavourite) {
-							return video;
-						}
-						return video.isFavourite === isFavourite;
-					})
-					.map((video: IVideo) => {
-						return <VideoListItem video={video} key={video.id} />;
-					})}
-			</ListGroup>
-		);
-	}
-
-	if (currentItems.length && !display) {
-		return (
-			<div className='mx-auto text-light' data-testid='grid-display'>
-				<Row className='row-cols-3 justify-content-center'>
-					{currentItems
-						.filter((video: IVideo) => {
-							if (!isFavourite) {
-								return video;
-							}
-							return video.isFavourite === isFavourite;
-						})
-						.map((video: IVideo) => {
-							return <VideoGridItem video={video} key={video.id} />;
-						})}
-				</Row>
-			</div>
-		);
+	if (currentItems.length) {
+		return <Videos currentItems={currentItems} />;
 	}
 
 	return <p className='text-center'>No videos added yet.</p>;
