@@ -8,21 +8,21 @@ This is a React Video application. You can add videos from youtube and vimeo by 
 
 - React
 - HTML
-- CSS
+- CSS (+BEM)
 - TypeScript
 
 ### What I worked on
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-- Used [YouTube API](https://developers.google.com/youtube/v3) and [Vimeo API](https://developer.vimeo.com/api/guides/start)
-- Used [Reactstrap](https://reactstrap.github.io/) and [Bootstrap v4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/)
-- Used context API to manage React state
+- Used [YouTube API](https://developers.google.com/youtube/v3) and [Vimeo API](https://developer.vimeo.com/api/guides/start),
+- Used [Reactstrap](https://reactstrap.github.io/) and [Bootstrap v4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/),
+- Used context API to manage React state,
 - Testing (TDD) using Jest and React-testing-library. I tested displaying the data correctly in the DOM and service functions.
 
 ## Installation
 
-To use this app you can [clone it](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository) from the repository. When it is downloaded open folder with app in your code editor and in terminal enter "npm install" - it should update/install necessary dependencies. After that you can use this app on your device (to use app in developer mode use terminal command: npm start)
+To use this app you can [clone it](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository) from the repository. When it is downloaded open folder with app in your code editor and in terminal enter "npm install" - it should update/install necessary dependencies. After that you can use this app on your device (to use app in developer mode use terminal command: npm start).
 
 ### :warning: Note
 
