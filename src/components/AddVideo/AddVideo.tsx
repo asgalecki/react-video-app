@@ -61,6 +61,7 @@ const AddVideo = () => {
 						className='m-auto form-control add-video__input'
 						value={videoURI}
 						onChange={(e) => setVideoURI(e.target.value)}
+						autoComplete='off'
 						required
 					/>
 					<InputGroupAddon addonType='append'>
