@@ -20,6 +20,7 @@ const VideoContainer = () => {
 
 	useEffect(() => {
 		dispatchUser({ type: "UPDATE_PAGES", pages: pages });
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [videos, display, isFavourite]);
 
 	// || Render

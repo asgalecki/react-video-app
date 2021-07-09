@@ -2,6 +2,7 @@ import IIndexable from "../../interfaces/IIndexable";
 
 const getVideoId = (type: string, videoURI: string) => {
 	const regex: IIndexable = {
+		// eslint-disable-next-line no-useless-escape
 		youtube: /[\w\d\-]{11}/,
 		vimeo: /[\d]{9}/,
 	};
