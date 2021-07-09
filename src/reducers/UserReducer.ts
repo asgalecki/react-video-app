@@ -16,23 +16,17 @@ export const UserReducer = (state: IUser, action: IUserAction) => {
 };
 
 function select(state: IUser, action: IUserAction) {
-	const updatedState: IUser = Object.assign({}, state, {
-		selected: action.select,
-	});
+	const updatedState: IUser = { ...state, selected: action.select };
 	return updatedState;
 }
 
 function updatePages(state: IUser, action: IUserAction) {
-	const updatedState: IUser = Object.assign({}, state, {
-		pages: action.pages,
-	});
+	const updatedState: IUser = { ...state, pages: action.pages };
 	return updatedState;
 }
 
 function toggleFavourite(state: IUser, action: IUserAction) {
-	const updatedState: IUser = Object.assign({}, state, {
-		isFavourite: action.isFavourite,
-	});
+	const updatedState: IUser = { ...state, isFavourite: action.isFavourite };
 	return updatedState;
 }
 
@@ -41,9 +35,6 @@ function toggleDisplay(state: IUser, action: IUserAction) {
 	if (action.display === false) {
 		selected = 1;
 	}
-	const updatedState: IUser = Object.assign({}, state, {
-		selected,
-		display: action.display,
-	});
+	const updatedState: IUser = { ...state, selected, display: action.display };
 	return updatedState;
 }
