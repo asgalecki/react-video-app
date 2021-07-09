@@ -1,5 +1,5 @@
 body {
-	background-image: url("https://image.freepik.com/free-photo/vintage-grunge-blue-concrete-texture-studio-wall-background-with-vignette_1258-28377.jpg");
+	background-image: url("./assets/images/background-540w.jpg");
 	background-attachment: fixed;
 	background-size: cover;
 	backdrop-filter: blur(0.5rem);
@@ -20,4 +20,25 @@ body {
 		rgba(255, 255, 255, 0.2)
 	);
 	backdrop-filter: blur(0.5rem);
+}
+
+@media (min-width: 768px) {
+	/* media medium */
+	body {
+		background-image: url("./assets/images/background-768w.jpg");
+	}
+}
+
+@media (min-width: 992px) {
+	/* media large */
+	body {
+		background-image: url("./assets/images/background-992w.jpg");
+	}
+}
+
+@media (min-width: 1200px) {
+	/* media extra large */
+	body {
+		background-image: url("./assets/images/background-1200w.jpg");
+	}
 }
