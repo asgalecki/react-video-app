@@ -4,6 +4,8 @@
 
 This is a React Video application. You can add videos from youtube and vimeo by giving url or video id only. You can store your favourite videos (and also mark them as favourites), sort them and watch via this app. Saved videos can be displayed in list or grid mode. If you decide there is some video that you do not want to keep in this app - just delete it (delete them all if you wish!).
 
+Visit [website](https://asgalecki.github.io/react-video-app/index.html) to play around!
+
 ### Stack
 
 - React
